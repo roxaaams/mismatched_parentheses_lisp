@@ -7,6 +7,7 @@
 
 const std::string fileName = "text.lisp";
 
+int numberBrackets;
 Stack bracketsStack;
 bool foundClosedBracket;
 
@@ -17,7 +18,9 @@ std::string getFileString() {
 }
 
 void print() {
-    if (!foundClosedBracket && bracketsStack.empty()) {
+    if (numberBrackets < 1) {
+        std::cout << "No parentheses in the lisp program." << "\n";
+    } else if (!foundClosedBracket && bracketsStack.empty()) {
             std::cout << "OK. Balanced parentheses" << "\n";
     } else if (!bracketsStack.empty()) {
             std::cout << "\nClose " << bracketsStack.size() << " parentheses. \n";
@@ -32,6 +35,7 @@ void solve() {
             char ch = file[i];
             if (ch == '(') {
                 bracketsStack.push(i);
+                ++numberBrackets;
             } else if (ch == ')') {
                 if (bracketsStack.empty()) {
                      if (!foundClosedBracket) {
@@ -41,6 +45,7 @@ void solve() {
                 } else {
                     bracketsStack.pop();
                 }
+                ++numberBrackets;
             }
         }
 

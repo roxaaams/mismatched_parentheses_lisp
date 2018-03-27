@@ -4,11 +4,10 @@
 
 1522160662 d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\bracket.h
 
-1522161643 source:d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\main.cpp
+1522161975 source:d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\main.cpp
 	<exception>
 	<fstream>
 	<iostream>
-	<map>
 	<string>
 	"stack.h"
 
