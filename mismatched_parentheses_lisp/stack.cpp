@@ -1,22 +1,57 @@
+#include "bracket.h"
 #include "stack.h"
 
-Stack::Stack(): brackets() {}
+Stack::Stack(): sizeStack(0), head(), tail() {}
 
-Stack::bool empty() const {
-    return brackets.empty();
+bool Stack::empty(){
+    return head == nullptr;
 }
 
-Stack::int size() const {
-    return brackets.size();
+int Stack::size() {
+    return sizeStack;
 }
 
-Stack::void push() {
-    brackets.push_back('(');
+void Stack::push(const int& position) {
+   if (position < 0)
+      throw "Negative position of parenthesis. Cannot push.";
+
+    if (tail == nullptr) {
+        head = tail = new Bracket(position);
+    } else {
+        tail->setNext(new Bracket(position));
+        tail = tail->getNext();
+    }
+
+    sizeStack++;
 }
 
-Stack::void pop() {
+int Stack::top() {
     if (empty())
-        throw UnderflowException();
+        throw "Empty stack. Cannot get top.";
 
-    brackets.pop_back();
+    return tail->getPosition();
+}
+
+void Stack::pop() {
+    if (empty())
+        throw "Empty stack. Cannot pop out.";
+
+    if (head == tail) {
+        head = tail = nullptr;
+    } else if (head->getNext() == tail) {
+        head->setNext(nullptr);
+        tail = head;
+    } else {
+        Bracket* temp = head;
+        while (temp->getNext() !=  tail) {
+            temp = temp->getNext();
+            if (temp->getNext() == tail) {
+                temp->setNext(nullptr);
+                tail = temp;
+                delete temp;
+            }
+        }
+    }
+
+    sizeStack--;
 }

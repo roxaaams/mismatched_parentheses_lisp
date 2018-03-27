@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1522160655 source:d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\bracket.cpp
+	"bracket.h"
+
+1522160662 d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\bracket.h
+
+1522161643 source:d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\main.cpp
+	<exception>
+	<fstream>
+	<iostream>
+	<map>
+	<string>
+	"stack.h"
+
+1522149671 d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\stack.h
+	"bracket.h"
+
+1522150365 d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\underflow_exception.h
+
+1522161284 source:d:\school\ads\mismatched_parentheses_lisp\mismatched_parentheses_lisp\stack.cpp
+	"bracket.h"
+	"stack.h"
+

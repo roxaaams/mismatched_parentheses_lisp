@@ -1,6 +1,7 @@
 #include <exception>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <string>
 
 #include "stack.h"
@@ -9,6 +10,7 @@ const std::string fileName = "text.lisp";
 
 Stack bracketsStack;
 bool foundClosedBracket;
+std::map<int, int> bracketPairs;
 
 std::string getFileString() {
     std::ifstream fin(fileName);
@@ -34,11 +36,14 @@ void solve() {
                 bracketsStack.push(i);
             } else if (ch == ')') {
                 if (bracketsStack.empty()) {
+                     bracketPairs[i] = -1;
                      if (!foundClosedBracket) {
                         foundClosedBracket = true;
                         std::cout << "First mismatched closed parenthesis on position: " << i << "\n";
                      }
                 } else {
+                    bracketPairs[bracketsStack.top()] = i;
+                    bracketPairs[i] = bracketsStack.top();
                     bracketsStack.pop();
                 }
             }

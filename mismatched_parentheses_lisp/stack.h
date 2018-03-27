@@ -1,19 +1,20 @@
 #ifndef STACK_H_
 #define STACK_H_
 
-#include <string>
-
-#include "underflow_exception.h"
+#include "bracket.h"
 
 class Stack {
   private:
-    std::string brackets;
+    int sizeStack;
+    Bracket* head;
+    Bracket* tail;
 
   public:
     Stack();
     bool empty();
     int size();
-    void push();
+    int top();
+    void push(const int& position);
     void pop();
 };
 
